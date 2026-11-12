@@ -253,6 +253,36 @@ body {
   transform: translateY(-2px);
 }
 
+/* Telegram Top Button */
+.nav-telegram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0, 136, 204, 0.15);
+  border: 1px solid rgba(0, 136, 204, 0.4);
+  color: #38bdf8;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-telegram-btn:hover {
+  background: rgba(0, 136, 204, 0.28);
+  border-color: #0088cc;
+  box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.nav-telegram-btn svg {
+  color: #29b6f6;
+  flex-shrink: 0;
+}
+
 /* Hero Section */
 .hero-section {
   text-align: center;
@@ -1200,6 +1230,79 @@ body {
 }
 
 /* ==========================================================================
+   FOOTER SECTION (COPYRIGHT BY KUNAMRA & TELEGRAM)
+   ========================================================================== */
+
+.app-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  animation: fadeIn 0.8s ease;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(24, 119, 242, 0.4), transparent);
+  margin-bottom: 22px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-copyright {
+  font-size: 0.92rem;
+}
+
+.brand-author {
+  color: #38bdf8;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.telegram-badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, rgba(0, 136, 204, 0.2) 0%, rgba(24, 119, 242, 0.25) 100%);
+  border: 1px solid rgba(0, 136, 204, 0.5);
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 136, 204, 0.25);
+}
+
+.telegram-badge-btn:hover {
+  background: linear-gradient(135deg, #0088cc 0%, #1877f2 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.telegram-badge-btn svg {
+  color: #29b6f6;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.telegram-badge-btn:hover svg {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN (PHONE, TABLET, DESKTOP)
    ========================================================================== */
 
@@ -1422,6 +1525,21 @@ body {
   .toast {
     width: 100%;
     font-size: 0.85rem;
+  }
+
+  /* Footer on Mobile */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .nav-telegram-btn .tg-label {
+    display: none;
+  }
+
+  .nav-telegram-btn {
+    padding: 8px 10px;
   }
 
   /* Batch on Mobile */
