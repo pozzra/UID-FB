@@ -9,12 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Smart API Base:
-  // - If running directly on the Express server (port 3000), use relative path.
-  // - If opened via Five Server / Live Server (port 5500, 5173, etc.) or file://,
-  //   route API calls to the Express backend on port 3000 with CORS.
-  const API_BASE = (location.port === '3000')
-    ? ''
-    : `http://${location.hostname || 'localhost'}:3000`;
+  // - In production (Vercel) or on local server (port 3000), use relative path ('') to query /api/lookup on the same origin.
+  // - Only when running under local static dev servers (Five Server 5500, Vite 5173, etc.) or file://,
+  //   route API calls to local Express server on port 3000.
+  const isLocalDevPort = (
+    location.port === '5500' || 
+    location.port === '5501' || 
+    location.port === '5173' || 
+    location.protocol === 'file:'
+  );
+  const API_BASE = isLocalDevPort ? `http://${location.hostname || 'localhost'}:3000` : '';
 
   // DOM Elements
   const urlInput = document.getElementById('url-input');
