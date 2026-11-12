@@ -387,6 +387,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'Facebook UID Finder API', timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`[FB UID Finder] Server running at http://localhost:${PORT}`);
+// Serve index.html explicitly for root path
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+// Start listener for local development (skipped in Vercel serverless environment)
+if (!process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[FB UID Finder] Server running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
