@@ -1,4 +1,4 @@
-// Multi-language Translation Engine (Default: Khmer 'km', with 'en' and 'vi')
+﻿// Multi-language Translation Engine (Default: Khmer 'km', with 'en' and 'vi')
 // Uses localStorage ('fb_uid_lang') to persist user language preference across reloads
 
 const translations = {
@@ -72,7 +72,18 @@ const translations = {
     toast_batch_done: "បានបញ្ចប់ការស្កេនទាំងអស់!",
     toast_history_cleared: "បានសម្អាតប្រវត្តិទាំងស្រុង!",
     sound_on: "សំឡេង៖ បានបើក",
-    sound_off: "សំឡេង៖ បានបិទ"
+    sound_off: "សំឡេង៖ បានបិទ",
+    btn_copy_name: "ចម្លងឈ្មោះ",
+    toast_copied_name: "បានចម្លងឈ្មោះ: ",
+    gender_male: "♂ ប្រុស (Male)",
+    gender_female: "♀ ស្រី (Female)",
+    gender_unknown: "👤 មិនដឹង",
+    status_live: "✅ Live / សកម្ម",
+    status_dead: "❌ Dead / បាត់",
+    status_disabled: "🚫 Disabled / បិទ",
+    status_checkpoint: "⚠️ Checkpoint",
+    status_memorialized: "🕊️ Memorialized",
+    status_redirect: "↩️ Redirected"
   },
   en: {
     app_title: "FACEBOOK UID FINDER PRO",
@@ -144,7 +155,18 @@ const translations = {
     toast_batch_done: "Batch scanning finished!",
     toast_history_cleared: "History cleared successfully!",
     sound_on: "Sound FX: Enabled",
-    sound_off: "Sound FX: Muted"
+    sound_off: "Sound FX: Muted",
+    btn_copy_name: "Copy Name",
+    toast_copied_name: "Copied name: ",
+    gender_male: "♂ Male",
+    gender_female: "♀ Female",
+    gender_unknown: "👤 Unknown",
+    status_live: "✅ Live / Active",
+    status_dead: "❌ Dead / Not Found",
+    status_disabled: "🚫 Disabled",
+    status_checkpoint: "⚠️ Checkpoint",
+    status_memorialized: "🕊️ Memorialized",
+    status_redirect: "↩️ Redirected"
   },
   vi: {
     app_title: "TÌM UID FACEBOOK PRO",
@@ -216,7 +238,18 @@ const translations = {
     toast_batch_done: "Đã hoàn tất tìm kiếm tất cả liên kết!",
     toast_history_cleared: "Đã xóa toàn bộ lịch sử!",
     sound_on: "Âm thanh hiệu ứng: Đã bật",
-    sound_off: "Âm thanh hiệu ứng: Đã tắt"
+    sound_off: "Âm thanh hiệu ứng: Đã tắt",
+    btn_copy_name: "Sao chép tên",
+    toast_copied_name: "Đã sao chép tên: ",
+    gender_male: "♂ Nam (Male)",
+    gender_female: "♀ Nữ (Female)",
+    gender_unknown: "👤 Không rõ",
+    status_live: "✅ Live / Hoạt động",
+    status_dead: "❌ Dead / Không tìm thấy",
+    status_disabled: "🚫 Đã bị vô hiệu hóa",
+    status_checkpoint: "⚠️ Checkpoint",
+    status_memorialized: "🕊️ Tưởng niệm",
+    status_redirect: "↩️ Chuyển hướng"
   }
 };
 
@@ -265,4 +298,5 @@ class I18nManager {
 }
 
 window.i18n = new I18nManager();
+
 

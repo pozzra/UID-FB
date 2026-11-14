@@ -230,6 +230,25 @@
                       d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                   </svg>
                 </h2>
+                <!-- Copy Name Button -->
+                <button id="copy-name-btn" class="copy-name-btn" title="Copy name">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span data-i18n="btn_copy_name">ចម្លងឈ្មោះ</span>
+                </button>
+                <!-- Gender + Status badges row -->
+                <div class="profile-badges-row">
+                  <span id="res-gender-badge" class="profile-meta-badge gender-badge">
+                    <span id="res-gender-icon">👤</span>
+                    <span id="res-gender-text">Unknown</span>
+                  </span>
+                  <span id="res-status-badge" class="profile-meta-badge status-badge">
+                    <span id="res-status-dot" class="status-led"></span>
+                    <span id="res-status-text">Live</span>
+                  </span>
+                </div>
                 <p id="res-desc" class="profile-desc">Public Profile</p>
                 <div style="margin-top: 6px; font-size: 0.78rem; color: #38bdf8; font-weight: 600;">
                   <span data-i18n="res_method_label">វិធីសាស្ត្រ:</span> <span id="res-method"

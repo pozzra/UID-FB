@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const resUid = document.getElementById('res-uid');
   const resMethod = document.getElementById('res-method');
   const copyUidBtn = document.getElementById('copy-uid-btn');
+  const copyNameBtn = document.getElementById('copy-name-btn');
+  const resGenderBadge = document.getElementById('res-gender-badge');
+  const resGenderIcon = document.getElementById('res-gender-icon');
+  const resGenderText = document.getElementById('res-gender-text');
+  const resStatusBadge = document.getElementById('res-status-badge');
+  const resStatusDot = document.getElementById('res-status-dot');
+  const resStatusText = document.getElementById('res-status-text');
   const linkWeb = document.getElementById('link-web');
   const linkApp = document.getElementById('link-app');
   const linkMsg = document.getElementById('link-msg');
@@ -335,6 +342,37 @@ document.addEventListener('DOMContentLoaded', () => {
     resUid.textContent = data.uid;
     resMethod.textContent = data.method === 'instant_regex' ? '⚡ Instant Regex' : '🌐 Deep Meta Graph';
 
+    // --- Gender Badge ---
+    if (resGenderBadge) {
+      const g = data.gender || 'unknown';
+      resGenderBadge.className = 'profile-meta-badge gender-badge ' + (g !== 'unknown' ? g : '');
+      if (g === 'male') {
+        resGenderIcon.textContent = '♂️';
+        resGenderText.textContent = window.i18n ? window.i18n.t('gender_male') : 'Male';
+      } else if (g === 'female') {
+        resGenderIcon.textContent = '♀️';
+        resGenderText.textContent = window.i18n ? window.i18n.t('gender_female') : 'Female';
+      } else {
+        resGenderIcon.textContent = '👤';
+        resGenderText.textContent = window.i18n ? window.i18n.t('gender_unknown') : 'Unknown';
+      }
+    }
+
+    // --- Account Status Badge ---
+    if (resStatusBadge) {
+      const s = data.accountStatus || 'live';
+      resStatusBadge.className = 'profile-meta-badge status-badge ' + (s !== 'live' ? s : '');
+      const statusLabels = {
+        live:          { text: window.i18n ? window.i18n.t('status_live') : '✅ Live / Active' },
+        dead:          { text: window.i18n ? window.i18n.t('status_dead') : '❌ Dead / Not Found' },
+        disabled:      { text: window.i18n ? window.i18n.t('status_disabled') : '🚫 Disabled' },
+        checkpoint:    { text: window.i18n ? window.i18n.t('status_checkpoint') : '⚠️ Checkpoint' },
+        memorialized:  { text: window.i18n ? window.i18n.t('status_memorialized') : '🕊️ Memorialized' },
+        redirect:      { text: window.i18n ? window.i18n.t('status_redirect') : '↩️ Redirected' }
+      };
+      resStatusText.textContent = (statusLabels[s] || statusLabels.live).text;
+    }
+
     // Avatar with fallback
     resAvatar.src = data.avatar;
     resAvatar.onerror = () => {
@@ -402,6 +440,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 2000);
     });
   });
+
+  // Copy Name Button
+  if (copyNameBtn) {
+    copyNameBtn.addEventListener('click', () => {
+      const name = resName.textContent.trim();
+      if (!name) return;
+      navigator.clipboard.writeText(name).then(() => {
+        if (window.soundFX) window.soundFX.playCopy();
+        const origHTML = copyNameBtn.innerHTML;
+        copyNameBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${window.i18n ? window.i18n.t('copied') : 'Copied!'}</span>`;
+        showToast(`${window.i18n ? window.i18n.t('toast_copied_name') : 'Copied name: '} ${name}`);
+        setTimeout(() => { copyNameBtn.innerHTML = origHTML; }, 2000);
+      });
+    });
+  }
 
   // ==========================================================================
   // 3D TILT PHYSICS ON CARD (Desktop only)
